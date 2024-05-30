@@ -52,10 +52,9 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
             password=db_pwd,
             database=db_name
         )
+        return connection
     except mysql.connector.Error as err:
         raise Exception(err)
-    
-    return connection
 
 
 def main():
