@@ -14,12 +14,10 @@ class Auth:
         """
         return False
 
-
     def authorization_header(self, request=None) -> str:
         """ return None for the moment
         """
         return None
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ return None for the moment
