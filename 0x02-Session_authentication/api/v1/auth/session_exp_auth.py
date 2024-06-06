@@ -9,6 +9,7 @@ from datetime import (
 )
 import os
 
+
 class SessionExpAuth(SessionAuth):
     """ class definition
     """
@@ -22,13 +23,14 @@ class SessionExpAuth(SessionAuth):
 
     def create_session(self, user_id=None):
         """" overloader session creater """
-        if super() is None:
+        if super().create_session(user_id) is None:
             return None
 
-        session_id = super()
-        session_dict = {}
-        session_dict["user_id"] = user_id
-        session_dict["created_at"] = datetime.now()
+        session_id = super().create_session(user_id)
+        session_dict = {
+            "user_id": user_id,
+            "created_at": datetime.now()
+        }
         self.user_id_by_session_id[session_id] = session_dict
 
         return session_id
