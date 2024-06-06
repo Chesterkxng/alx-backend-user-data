@@ -2,7 +2,7 @@
 """
 Define class SessionDButh
 """
-from .session_exp_auth import SessionExpAuth
+from api.v1.auth.session_exp_auth import SessionExpAuth
 from models.user_session import UserSession
 
 
@@ -16,7 +16,7 @@ class SessionDBAuth(SessionExpAuth):
         overloader version for dbstorage
         """
         session_id = super().create_session(user_id)
-        if not session_id:
+        if session_id is None:
             return None
         kw = {
             "user_id": user_id,
