@@ -17,7 +17,7 @@ class SessionExpAuth(SessionAuth):
         """ overloader method """
         try:
             duration = int(os.getenv("SESSION_DURATION"))
-        except Execption:
+        except Exception:
             duration = 0
         self.session_duration = duration
 
