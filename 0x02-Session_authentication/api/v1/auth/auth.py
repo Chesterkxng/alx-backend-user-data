@@ -3,9 +3,9 @@
 class to manage the API authentication.
 """
 from typing import List, TypeVar
-from flask import request, cookies
+from flask import request
 import fnmatch
-
+import os
 
 class Auth:
     """ class definition
