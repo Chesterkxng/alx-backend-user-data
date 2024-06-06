@@ -7,6 +7,7 @@ from flask import request
 import fnmatch
 import os
 
+
 class Auth:
     """ class definition
     """
