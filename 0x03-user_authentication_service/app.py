@@ -51,7 +51,7 @@ def logout() -> str:
     """
     LOG OUT
     """
-    session_id = request.cookies.get("session_id")
+    session_id = request.cookies.get("session_id", None)
     if session_id is None:
         abort(403)
     user = AUTH.get_user_from_session_id(session_id)
@@ -66,7 +66,7 @@ def profile():
     """
     Finds user if existing in session or abort
     """
-    session_id = request.cookies.get('session_id')
+    session_id = request.cookies.get('session_id', None)
     if session_id is None:
         abort(403)
     user = AUTH.get_user_from_session_id(session_id)
