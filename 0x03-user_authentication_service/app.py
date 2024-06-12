@@ -8,7 +8,7 @@ app = Flask(__name__)
 AUTH = Auth()
 
 
-@app.route('/', methods=['GET'], strict_slashes=False)
+@app.route("/", methods=['GET'], strict_slashes=False)
 def welcome() -> str:
     """
     Index default route
@@ -16,7 +16,7 @@ def welcome() -> str:
     return jsonify({"message": "Bienvenue"})
 
 
-@app.route('/users', methods=['POST'], strict_slashes=False)
+@app.route("/users", methods=['POST'], strict_slashes=False)
 def users() -> str:
     """
     user registration
@@ -30,7 +30,7 @@ def users() -> str:
         return jsonify({"message": "email already registered"}), 400
 
 
-@app.route('/sessions', methods=['POST'], strict_slashes=False)
+@app.route("/sessions", methods=['POST'], strict_slashes=False)
 def login() -> str:
     """
     session creater after login
@@ -46,7 +46,7 @@ def login() -> str:
         abort(401)
 
 
-@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+@app.route("/sessions", methods=['DELETE'], strict_slashes=False)
 def logout() -> str:
     """
     LOG OUT
@@ -55,11 +55,11 @@ def logout() -> str:
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        return redirect('/')
+        return redirect("/")
     abort(403)
 
 
-@app.route('/profile', methods=['GET'], strict_slashes=False)
+@app.route("/profile", methods=['GET'], strict_slashes=False)
 def profile():
     """
     Finds user if existing in session or abort
